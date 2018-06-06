@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity()
+ * @ORM\Table(name="users",
+ *      uniqueConstraints={@ORM\UniqueConstraint(name="users_email_unique",columns={"email"})}
+ * )
  */
+
 class User
 {
     /**
