@@ -2,7 +2,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -27,17 +26,6 @@ class Place
      * @ORM\Column(type="string")
      */
     protected $address;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Price", mappedBy="place")
-     * @var Price[]
-     */
-    protected $prices;
-
-    public function __construct()
-    {
-        $this->prices = new ArrayCollection();
-    }
 
     public function getId()
     {
@@ -71,22 +59,4 @@ class Place
         $this->address = $address;
         return $this;
     }
-
-    /**
-     * @return Price[]
-     */
-    public function getPrices(): array
-    {
-        return $this->prices;
-    }
-
-    /**
-     * @param Price[] $prices
-     */
-    public function setPrices(array $prices): void
-    {
-        $this->prices = $prices;
-    }
-
-
 }
